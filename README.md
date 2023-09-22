@@ -33,3 +33,5 @@ on, off, current
 - When turning on/off, the script takes quite awhile (1-2 mins) because the device is rebooting
 
 - This will turn the radio on/off for both 5ghz and 2.4ghz
+
+- This is for the KVD21 model device, not sure if it works on other devices
