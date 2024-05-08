@@ -19,11 +19,15 @@ run tmobile_wifi_onoff.sh with:
 ```./tmobile_wifi_onoff.sh <option>```
 
 ## Options
-on, off, current
+on, off, hide, show, current
 
 ```on``` turns the radio on
 
 ```off``` turns the radio off
+
+```hide``` hidden ssid
+
+```show``` broadcast ssid
 
 ```current``` gets the current settings
 
