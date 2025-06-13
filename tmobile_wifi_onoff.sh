@@ -66,4 +66,10 @@ case "$1" in
 "current")
   echo "$config" | jq
   ;;
+
+*)
+  echo "Not a command"
+  echo
+  help
+  ;;
 esac
