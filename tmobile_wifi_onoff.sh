@@ -54,6 +54,10 @@ case "$1" in
   echo "$config" | jq
   ;;
 
+"gatewayinfo")
+  curl -s http://${TMOBILE_IP}:8080/TMI/v1/gateway\?get=all | jq
+  ;;
+
 "current")
   echo "$config" | jq
   ;;
