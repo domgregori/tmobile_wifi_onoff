@@ -28,28 +28,28 @@ currentConfig
 case "$1" in
 "on")
   onConfig=$(echo "${config}" | jq -r '.[].isRadioEnabled = true')
-  curl -d "$onConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set\=ap -H "Authorization: Bearer ${token}"
+  curl -d "$onConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set=ap -H "Authorization: Bearer ${token}"
   currentConfig
   echo "$config" | jq
   ;;
 
 "off")
   offConfig=$(echo "${config}" | jq -r '.[].isRadioEnabled = false')
-  curl -d "$offConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set\=ap -H "Authorization: Bearer ${token}"
+  curl -d "$offConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set=ap -H "Authorization: Bearer ${token}"
   currentConfig
   echo "$config" | jq
   ;;
 
 "hide")
   offConfig=$(echo "${config}" | jq -r '.[].ssid.isBroadcastEnabled = false')
-  curl -d "$offConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set\=ap -H "Authorization: Bearer ${token}"
+  curl -d "$offConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set=ap -H "Authorization: Bearer ${token}"
   currentConfig
   echo "$config" | jq
   ;;
 
 "show")
   offConfig=$(echo "${config}" | jq -r '.[].ssid.isBroadcastEnabled = true')
-  curl -d "$offConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set\=ap -H "Authorization: Bearer ${token}"
+  curl -d "$offConfig" http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?set=ap -H "Authorization: Bearer ${token}"
   currentConfig
   echo "$config" | jq
   ;;
