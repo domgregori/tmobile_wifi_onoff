@@ -58,6 +58,11 @@ case "$1" in
   curl -s http://${TMOBILE_IP}:8080/TMI/v1/gateway\?get=all | jq
   ;;
 
+"restart")
+  curl -s -X POST http://${TMOBILE_IP}:8080/TMI/v1/gateway/reset\?set=reboot -H "Authorization: Bearer ${token}"
+  echo "Rebooting modem"
+  ;;
+
 "current")
   echo "$config" | jq
   ;;
