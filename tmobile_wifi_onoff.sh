@@ -1,17 +1,24 @@
 source ./.env
-if [ $# -eq 0 ]; then
-  echo "Valid options are (on, off, hide, show, current)"
+
+function help {
+  echo "Valid options are (on, off, hide, show, current, gatewayinfo, restart)"
   echo ""
-  echo "on:       turns on radios"
-  echo "off:      turns off radios"
-  echo "hide:     ssid hidden"
-  echo "show:     broadcasts ssid"
-  echo "current:  shows current config"
+  echo "on:           turns on radios"
+  echo "off:          turns off radios"
+  echo "hide:         ssid hidden"
+  echo "show:         broadcasts ssid"
+  echo "current:      shows current config"
+  echo "gatewayinfo:  shows gateway info"
+  echo "restart:      restart gateway"
+}
+
+if [ $# -eq 0 ]; then
+  help
   exit
 fi
 
 function currentConfig {
-  config=$(curl -s http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?get\=ap -H "Authorization: Bearer ${token}")
+  config=$(curl -s http://${TMOBILE_IP}:8080/TMI/v1/network/configuration/v2\?get=ap -H "Authorization: Bearer ${token}")
 }
 
 token=$(curl -s -X POST http://${TMOBILE_IP}:8080/TMI/v1/auth/login -d "{\"pin\": 0, \"username\": \"admin\", \"password\": \"${TMOBILE_ADMIN_PASSWORD}\" }" | jq -r .auth.token)
